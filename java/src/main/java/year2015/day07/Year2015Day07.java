@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static utils.Utils.lines;
+import static utils.Utils.lineStream;
 
 public class Year2015Day07 {
 
@@ -15,7 +15,7 @@ public class Year2015Day07 {
     private static final Map<String, Character> vals = new HashMap<>();
 
     public static void setup() throws IOException {
-        lines("data.txt").forEach(line -> {
+        lineStream("data.txt").forEach(line -> {
             String[] split = line.split("->");
             String output = split[1].trim();
             Operation operation = createOperation(split[0]);

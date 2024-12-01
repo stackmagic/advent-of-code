@@ -3,13 +3,13 @@ package year2015.day09;
 import java.io.IOException;
 import java.util.*;
 
-import static utils.Utils.lines;
+import static utils.Utils.lineStream;
 
 public class Year2015Day09 {
 
     private static Map<String, TreeSet<Edge>> load(String file, Comparator<Integer> comparator) throws IOException {
         Map<String, TreeSet<Edge>> map = new HashMap<>();
-        lines(file).forEach(line -> {
+        lineStream(file).forEach(line -> {
             String[] parts = line.split(" ");
             String a = parts[0];
             String b = parts[2];

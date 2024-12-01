@@ -2,12 +2,12 @@ package year2015.day08;
 
 import java.io.IOException;
 
-import static utils.Utils.lines;
+import static utils.Utils.lineStream;
 
 public class Year2015Day08 {
 
     public static int solvePart1(String file) throws IOException {
-        return lines(file)
+        return lineStream(file)
                 .map(line -> {
 
                     int s = 0;
@@ -64,7 +64,7 @@ public class Year2015Day08 {
     }
 
     public static int solvePart2(String file) throws IOException {
-        return lines(file)
+        return lineStream(file)
                 .map(line -> {
 
                     int s = 2; // starting and ending "

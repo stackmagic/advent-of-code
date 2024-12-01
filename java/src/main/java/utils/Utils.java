@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Utils {
@@ -18,11 +20,18 @@ public final class Utils {
     private Utils() {}
 
     /** load a file from src/main/resources from the same package as the caller */
-    public static Stream<String> lines(String filename) {
+    public static Stream<String> lineStream(String filename) {
+        return getBufferedReader(filename).lines();
+    }
+
+    public static List<String> lineList(String filename) {
+        return getBufferedReader(filename).lines().collect(Collectors.toList());
+    }
+
+    public static BufferedReader getBufferedReader(String filename) {
         InputStream is = getResourceAsStream(filename);
         InputStreamReader ir = new InputStreamReader(is);
-        BufferedReader br = new BufferedReader(ir);
-        return br.lines();
+        return new BufferedReader(ir);
     }
 
     public static String file(String filename) throws IOException {

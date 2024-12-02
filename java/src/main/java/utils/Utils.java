@@ -7,21 +7,36 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/** load a file from src/main/resources from the same package as the caller */
 public final class Utils {
 
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     private Utils() {}
 
-    /** load a file from src/main/resources from the same package as the caller */
     public static Stream<String> lineStream(String filename) {
         return getBufferedReader(filename).lines();
+    }
+
+    public static List<List<Integer>> intLineList(String filename) {
+        return intLineStream(filename)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public static Stream<List<Integer>> intLineStream(String filename) {
+        return lineStream(filename)
+                .map(it -> {
+                    return Arrays.stream(it.split("\\s+"))
+                            .map(Integer::parseInt)
+                            .collect(Collectors.toCollection(ArrayList::new));
+                });
     }
 
     public static List<String> lineList(String filename) {

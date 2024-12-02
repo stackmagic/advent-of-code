@@ -9,7 +9,7 @@ import static utils.Utils.lineList;
 
 public class Year2024Day01 {
 
-    public static List<List<Integer>> loadAndParse(String fileName) {
+    public static List<List<Integer>> loadAndParseAsColumns(String fileName) {
         List<String> lines = lineList(fileName);
         List<Integer> a = new ArrayList<>();
         List<Integer> b = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Year2024Day01 {
     }
 
     public static int solvePart1(String fileName) {
-        List<List<Integer>> input = loadAndParse(fileName);
+        List<List<Integer>> input = loadAndParseAsColumns(fileName);
         List<Integer> a = input.get(0);
         List<Integer> b = input.get(1);
 
@@ -40,7 +40,7 @@ public class Year2024Day01 {
     }
 
     public static int solvePart2(String fileName) {
-        List<List<Integer>> input = loadAndParse(fileName);
+        List<List<Integer>> input = loadAndParseAsColumns(fileName);
         List<Integer> a = input.get(0);
         List<Integer> b = input.get(1);
 

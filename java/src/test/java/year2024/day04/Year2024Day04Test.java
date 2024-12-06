@@ -10,21 +10,21 @@ public class Year2024Day04Test {
 
     @Test
     void testPart1Example() throws IOException {
-        assertEquals(18, Year2024Day04.solvePart1(file("example.txt")));
+        assertEquals(18, Year2024Day04.solvePart1(toCharGrid("example.txt")));
     }
 
     @Test
     void testPart1() throws IOException {
-        assertEquals(2414, Year2024Day04.solvePart1(file("data.txt")));
+        assertEquals(2414, Year2024Day04.solvePart1(toCharGrid("data.txt")));
     }
 
     @Test
     void testPart2Example() throws IOException {
-        assertEquals(9, Year2024Day04.solvePart2(file("example.txt")));
+        assertEquals(9, Year2024Day04.solvePart2(toCharGrid("example.txt")));
     }
 
     @Test
     void testPart2() throws IOException {
-        assertEquals(1871, Year2024Day04.solvePart2(file("data.txt")));
+        assertEquals(1871, Year2024Day04.solvePart2(toCharGrid("data.txt")));
     }
 }

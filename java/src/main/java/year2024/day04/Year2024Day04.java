@@ -4,17 +4,7 @@ import java.io.IOException;
 
 public class Year2024Day04 {
 
-    public static byte[][] toGrid(String input) {
-        String[] lines = input.split("\n");
-        byte[][] grid = new byte[lines.length][];
-        for (int i = 0; i < lines.length; i++) {
-            grid[i] = lines[i].getBytes();
-        }
-        return grid;
-    }
-
-    public static int solvePart1(String data) throws IOException {
-        byte[][] grid = toGrid(data);
+    public static int solvePart1(char[][] grid) throws IOException {
         int count = 0;
         int xlen = grid.length;
         for (int x = 0; x < grid.length; x++) {
@@ -93,16 +83,15 @@ public class Year2024Day04 {
         return count;
     }
 
-    public static int solvePart2(String data) throws IOException {
-        byte[][] grid = toGrid(data);
+    public static int solvePart2(char[][] grid) throws IOException {
         int count = 0;
         for (int x = 1; x < grid.length - 1; x++) {
             for (int y = 1; y < grid[x].length - 1; y++) {
                 if (grid[x][y] == 'A') {
-                    byte tl = grid[x + 1][y - 1];
-                    byte tr = grid[x + 1][y + 1];
-                    byte bl = grid[x - 1][y - 1];
-                    byte br = grid[x - 1][y + 1];
+                    char tl = grid[x + 1][y - 1];
+                    char tr = grid[x + 1][y + 1];
+                    char bl = grid[x - 1][y - 1];
+                    char br = grid[x - 1][y + 1];
 
                     if (((tl == 'M' && br == 'S') || (tl == 'S' && br == 'M')) &&
                             ((tr == 'M' && bl == 'S') || (tr == 'S' && bl == 'M'))) {

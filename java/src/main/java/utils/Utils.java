@@ -21,6 +21,23 @@ public final class Utils {
 
     private Utils() {}
 
+    public static char[][] toCharGrid(String filename) throws IOException {
+        String input = file(filename);
+        String[] lines = input.split("\n");
+        char[][] grid = new char[lines.length][];
+        for (int y = 0; y < lines.length; y++) {
+            byte[] bytes = lines[y].getBytes();
+            grid[y] = new char[bytes.length];
+            for (int x = 0; x < grid.length; x++) {
+                grid[y][x] = (char) bytes[x];
+            }
+        }
+
+        // todo this is a grid[y][x] - convert to grid[x][y] so its more intuitive?
+        //  0,0 is on top left
+        return grid;
+    }
+
     public static Stream<String> lineStream(String filename) {
         return getBufferedReader(filename).lines();
     }

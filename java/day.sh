@@ -26,12 +26,10 @@ cat > ${main} << EOF
 package year${year}.day${day};
 
 import java.io.IOException;
-import java.util.regex.Matcher;
+import java.util.regex.*;
 import java.util.regex.Pattern;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import static utils.Utils.*;
 
 public class Year${year}Day${day} {
 
@@ -55,7 +53,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Utils.*;
 
-public class Year${year}Day${day}Test {
+class Year${year}Day${day}Test {
 
     @Test
     void testPart1Example() throws IOException {

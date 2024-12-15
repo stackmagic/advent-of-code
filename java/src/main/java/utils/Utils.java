@@ -23,18 +23,16 @@ public final class Utils {
 
     public static char[][] toCharGrid(String filename) throws IOException {
         String input = file(filename);
-        String[] lines = input.split("\n");
+        return toCharGrid(input.split("\n"));
+    }
+
+    public static char[][] toCharGrid(String[] lines) throws IOException {
         char[][] grid = new char[lines.length][];
         for (int y = 0; y < lines.length; y++) {
-            byte[] bytes = lines[y].getBytes();
-            grid[y] = new char[bytes.length];
-            for (int x = 0; x < grid.length; x++) {
-                grid[y][x] = (char) bytes[x];
-            }
+            char[] chars = lines[y].toCharArray();
+            grid[y] = new char[chars.length];
+            System.arraycopy(chars, 0, grid[y], 0, chars.length);
         }
-
-        // todo this is a grid[y][x] - convert to grid[x][y] so its more intuitive?
-        //  0,0 is on top left
         return grid;
     }
 

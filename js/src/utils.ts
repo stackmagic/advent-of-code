@@ -9,6 +9,18 @@ export function loadLines(path: string): string[] {
     return load(path).split('\n');
 }
 
+export function loadLinesSplitByBlankLine(path: string): [string[], string[]] {
+    const lines = loadLines(path);
+    const blankIndex = lines.indexOf('');
+    if (blankIndex < 0) {
+        throw new Error('no blank line');
+    }
+    return [
+        lines.slice(0, blankIndex),
+        lines.slice(blankIndex + 1),
+    ];
+}
+
 /** @returns a Map<Y, Map<X, value>> */
 export function loadGrid(path: string): Map<number, Map<number, string>> {
     return toGrid(loadLines(path));

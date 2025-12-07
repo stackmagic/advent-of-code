@@ -21,13 +21,33 @@ export function loadLinesSplitByBlankLine(path: string): [string[], string[]] {
     ];
 }
 
-/** @returns a Map<Y, Map<X, value>> */
-export function loadGrid(path: string): Map<number, Map<number, string>> {
-    return toGrid(loadLines(path));
+
+
+/** @returns a Map<Y, Map<X, value>> of each word in the file (split by spaces) */
+export function loadWordGrid(path: string): Map<number, Map<number, string>> {
+    return toWordGrid(loadLines(path));
 }
 
-/** @returns a Map<Y, Map<X, value>> */
-export function toGrid(lines: string[]): Map<number, Map<number, string>> {
+/** @returns a Map<Y, Map<X, value>> of each word in the file (split by spaces) */
+export function toWordGrid(lines: string[]): Map<number, Map<number, string>> {
+    const rv = new Map<number, Map<number, string>>();
+    lines.forEach((line, y) => {
+        const lineMap = new Map<number, string>;
+        line.trim()
+            .split(/\s+/)
+            .forEach((word, x) => lineMap.set(x, word));
+        rv.set(y, lineMap);
+    });
+    return rv;
+}
+
+/** @returns a Map<Y, Map<X, value>> of each char in the file */
+export function loadCharGrid(path: string): Map<number, Map<number, string>> {
+    return toCharGrid(loadLines(path));
+}
+
+/** @returns a Map<Y, Map<X, value>> of each char in the file */
+export function toCharGrid(lines: string[]): Map<number, Map<number, string>> {
     const rv = new Map<number, Map<number, string>>();
     lines.forEach((line, y) => {
         const lineMap = new Map<number, string>();

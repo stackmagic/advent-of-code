@@ -21,8 +21,6 @@ export function loadLinesSplitByBlankLine(path: string): [string[], string[]] {
     ];
 }
 
-
-
 /** @returns a Map<Y, Map<X, value>> of each word in the file (split by spaces) */
 export function loadWordGrid(path: string): Map<number, Map<number, string>> {
     return toWordGrid(loadLines(path));

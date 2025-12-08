@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest"
+    "test": "node --expose-gc --predictable ./node_modules/.bin/jest --runInBand"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",

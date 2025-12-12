@@ -1,3 +1,5 @@
+import {rmul, rsum} from "../../utils";
+
 export function solve1(grid: Map<number, Map<number, string>>): number {
     const ymax = grid.size;
     const xmax = grid.get(0).size;
@@ -37,12 +39,9 @@ export function solve2(lines: string[]): number {
     return sum;
 }
 
-const add = (acc, cur) => acc + cur;
-const mul = (acc, cur) => acc * cur;
-
 function doCalc(op: string, nums: number[]): number {
     return nums.reduce(
-        op === '+' ? add : mul,
+        op === '+' ? rsum : rmul,
         op === '+' ? 0 : 1,
     );
 }
@@ -60,7 +59,7 @@ function process(lines: string[]): number {
 function rotate(lines: string[]): string[] {
     const rv: string[] = [];
     let ymax = lines.length;
-    let xmax = lines.map(it => it.length).reduce((a, b) => Math.max(a, b), 0);
+    let xmax = Math.max(...lines.map(it => it.length));
 
     for (let y = 0; y < ymax; y++) {
         const line = lines[y];

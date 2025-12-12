@@ -1,4 +1,4 @@
-import {writeLines} from "../../utils";
+import {rsum, writeLines} from "../../utils";
 import {Perf} from "../../perf";
 
 /*
@@ -43,7 +43,7 @@ function countPaths(from: string, to: string, map: Map<string, Node>, depth: num
     const depthMinus = depth - 1;
     return src.children
         .map(c => countPaths(c, to, map, depthMinus))
-        .reduce((a, b) => a + b, 0);
+        .reduce(rsum, 0);
 }
 
 function toMap(nodes: Node[]): Map<string, Node> {

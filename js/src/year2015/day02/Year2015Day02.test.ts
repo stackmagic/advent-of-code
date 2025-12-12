@@ -1,7 +1,7 @@
 import {solve} from "./Year2015Day02";
 import {loadLines} from "../../utils";
 
-describe('Year2015 Day02',() => {
+describe('Year2015 Day02', () => {
 
     let paperSqFt: number;
     let ribbonFt: number;

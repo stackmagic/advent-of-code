@@ -1,7 +1,9 @@
+import {rsum} from "../../utils";
+
 export function solve(lines: string[], k: number): number {
     return lines
         .map(it => findLargestNumber(it, k))
-        .reduce((sum, it) => sum + it, 0);
+        .reduce(rsum, 0);
 }
 
 export function findLargestNumber(str: string, k: number): number {

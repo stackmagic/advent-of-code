@@ -1,3 +1,5 @@
+import {rsum} from "../../utils";
+
 export function solve1(lines: string[]): number {
     const [shapes, trees] = parse(lines);
 
@@ -6,18 +8,17 @@ export function solve1(lines: string[]): number {
         //     // checks if the total  space required fits in the available space
         //     const totalRequired = tree.packages
         //         .map((count, idx) => count * shapes[idx].spaceRequirement)
-        //         .reduce((a, b) => a + b, 0);
+        //         .reduce(rsum, 0);
         //     return tree.availableSpace >= totalRequired;
         // })
         .filter(tree => {
             // check if there are enough 3x3 squares to fit everything without fancy packing
             const squaresAvailable = Math.floor(tree.x / 3) * Math.floor(tree.y / 3)
-            const squaresRequired = tree.packages.reduce((a, b) => a + b, 0);
+            const squaresRequired = tree.packages.reduce(rsum, 0);
             return squaresAvailable >= squaresRequired
         });
 
     return feasible.length;
-
 }
 
 function parse(lines: string[]): [Shape[], Tree[]] {

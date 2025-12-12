@@ -1,5 +1,8 @@
 import * as fs from 'fs-extra';
 
+export const rsum = (a, b) => a + b;
+export const rmul = (a, b) => a * b;
+
 export function load(path: string): string {
     const prefix = getDirOfCaller();
     return fs.readFileSync(prefix + path, 'ascii');

@@ -1,3 +1,5 @@
+import {rsum} from "../../utils";
+
 export function solve1(strRanges: string[], strIds: string[]): number {
     const ranges = toSortedRanges(strRanges);
     const ids = strIds.map(Number);
@@ -34,8 +36,9 @@ export function solve2(strRanges: string[]): number {
     }
 
     // count numbers
-    return ranges.map(r => r.end - r.start + 1)
-        .reduce((acc, curr) => acc + curr, 0);
+    return ranges
+        .map(r => r.end - r.start + 1)
+        .reduce(rsum, 0);
 }
 
 class Range {

@@ -1,7 +1,9 @@
+import {rsum} from "../../utils";
+
 export function solve1(lines: string[]): number {
     const instr = parse(lines);
     return instr.map(i => startMachine(i))
-        .reduce((acc, sum) => acc + sum, 0);
+        .reduce(rsum, 0);
 }
 
 function startMachine(inst: Instructions): number {

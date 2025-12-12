@@ -1,3 +1,5 @@
+import {rsum} from "../../utils";
+
 function hasAtLeastThreeVowels(line: string): boolean {
     const vowelCount: number = Array.from(line)
         .filter(c => 'aeiou'.includes(c))
@@ -28,7 +30,7 @@ function checkNiceA(line: string): boolean {
 export function solveA(lines: string[]): number {
     return lines
         .map(line => checkNiceA(line) ? 1 : 0)
-        .reduce((a, b) => a + b, 0);
+        .reduce(rsum, 0);
 }
 
 export function hasDoublePair(line: string): boolean {
@@ -52,5 +54,5 @@ function checkNiceB(line: string): boolean {
 export function solveB(lines: string[]): number {
     return lines
         .map(line => checkNiceB(line) ? 1 : 0)
-        .reduce((a, b) => a + b, 0);
+        .reduce(rsum, 0);
 }

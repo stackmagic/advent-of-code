@@ -1,7 +1,16 @@
 import * as fs from 'fs-extra';
 
-export const rsum = (a, b) => a + b;
-export const rmul = (a, b) => a * b;
+export const sortNumAsc = (a: number, b: number) => a - b;
+export const sortNumDsc = (a: number, b: number) => b - a;
+export const sortLenAsc = (a: any[], b: any[]) => sortNumAsc(a.length, b.length);
+export const sortLenDsc = (a: any[], b: any[]) => sortNumDsc(a.length, b.length);
+
+export const arrDiv = (arr: number[], d: number) => arr.map(it => it / d);
+
+export const arrZipAdd = (arr1: number[], arr2: number[]) => arr1.map((a, idx) => a + arr2[idx]);
+
+export const rsum = (a: number, b: number) => a + b;
+export const rmul = (a: number, b: number) => a * b;
 
 export function load(path: string): string {
     const prefix = getDirOfCaller();

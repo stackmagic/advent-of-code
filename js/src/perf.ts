@@ -14,13 +14,11 @@ export class Perf {
 
     private readonly start = this.snapshot();
 
-    public finish(toConsole = true): Stats {
+    public finish(msg?: string): Stats {
         const end = this.snapshot();
         const diff = this.diff(this.start, end);
 
-        if (toConsole) {
-            this.dumpToConsole(diff);
-        }
+        this.dumpToConsole(diff, msg);
 
         return diff;
     }
@@ -42,7 +40,7 @@ export class Perf {
         ) as unknown as Stats;
     }
 
-    private dumpToConsole(stats: Stats): void {
+    private dumpToConsole(stats: Stats, msg?: string): void {
         const clean = Object.fromEntries(
             Object.entries(stats)
                 .filter(([k]) => k === 'time' || k === 'heapUsed')
@@ -54,8 +52,8 @@ export class Perf {
             .split('\n')
             .map(it => it.trim())
             .join(' ')
-        const msg = this.gcAvailable() ? '' : '\nnode should be started with --expose-gc --predictable to get accurate memory readings';
-        console.log(output + msg);
+        const warn = this.gcAvailable() ? '' : '\nnode should be started with --expose-gc --predictable to get accurate memory readings';
+        console.log(output + (msg ? ('\n' + msg) : '') + warn);
     }
 
     private gcAvailable(): boolean {

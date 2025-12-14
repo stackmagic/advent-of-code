@@ -7,7 +7,3 @@ describe('Year2025Day10', () => {
     it('example2', () => expect(solve2(loadLines('example.txt'))).toBe(33));
     it('real2', () => expect(solve2(loadLines('data.txt'))).toBe(19210));
 });
-
-
-// low 18524
-
